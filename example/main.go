@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT-0
+// LICENSE: https://spdx.org/licenses/MIT-0.html
+
 package main
 
 import (
@@ -6,8 +9,11 @@ import (
 )
 
 func main() {
-	ips, _ := myip.PublicIPs()
+	ips, err := myip.PublicIPs()
 	for _, ip := range ips {
-		fmt.Printf("%v\n", ip.String())
+		if len(ip) != 0 {
+			fmt.Printf("IP: %v\n", ip.String())
+		}
 	}
+	fmt.Printf("Error: %v\n", err)
 }

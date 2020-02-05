@@ -4,8 +4,9 @@
 package myip
 
 import (
-	"net"
 	"context"
+	"fmt"
+	"net"
 )
 
 const (
@@ -22,9 +23,16 @@ func PublicIPs() (ips []net.IP, err error) {
 	ip4, err4 := PublicIPv4()
 	ip6, err6 := PublicIPv6()
 	if err4 != nil {
-		err = err4
+		err = fmt.Errorf("ipv4 error: "+err4.Error())
 	} else if err6 != nil {
-		err = err6
+		err = fmt.Errorf("ipv6 error: "+err6.Error())
+	}
+	if err4 != nil && err6 != nil{
+		err = fmt.Errorf(
+			"fatal network error: " + "\n" +
+			err4.Error() + "\n" +
+			err6.Error(),
+		)
 	}
 	return []net.IP{ip4,ip6}, err
 }
