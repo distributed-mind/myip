@@ -36,9 +36,9 @@ Error: ipv6 error: lookup o-o.myaddr.l.google.com on 1.1.1.1:53: dial udp6 [2001
 $
 ```
 
-## TODO:
+## TODO
 - LAN/internal IP discovery
 - LAN default gateway discovery
 
 ## Contributing
-Please [submit an issue](https://github.com/distributed-mind/myip/issues/new) on github.
+Please submit [an issue](https://github.com/distributed-mind/myip/issues/new) or [pull request](https://github.com/distributed-mind/myip/pull/new/master) on github.
